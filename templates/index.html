@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Heart Attack Risk Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Heart Attack Risk Prediction</h1>
+    <form method="POST" action="/predict">
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <input type="radio" id="female" name="sex" value="0" required>
+            <label for="female">Female</label>
+            <input type="radio" id="male" name="sex" value="1">
+            <label for="male">Male</label>
+        </div>
+        <div class="form-group">
+            <label for="cp">Chest Pain Type:</label>
+            <select id="cp" name="cp" required>
+                <option value="0">Typical angina</option>
+                <option value="1">Atypical angina</option>
+                <option value="2">Non-anginal pain</option>
+                <option value="3">Asymptomatic</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="trtbps">Resting Blood Pressure (mm Hg):</label>
+            <input type="number" id="trtbps" name="trtbps" required>
+        </div>
+        <div class="form-group">
+            <label for="chol">Cholesterol (mg/dL):</label>
+            <input type="number" id="chol" name="chol" required>
+        </div>
+        <div class="form-group">
+            <label for="fbs">Fasting Blood Sugar:</label>
+            <input type="radio" id="fbs-normal" name="fbs" value="0" required>
+            <label for="fbs-normal">≤ 120 mg/dL</label>
+            <input type="radio" id="fbs-high" name="fbs" value="1">
+            <label for="fbs-high">&gt; 120 mg/dL</label>
+        </div>
+        <div class="form-group">
+            <label for="restecg">Resting ECG Results:</label>
+            <select id="restecg" name="restecg" required>
+                <option value="0">Normal</option>
+                <option value="1">ST-T wave abnormality</option>
+                <option value="2">Probable or Definite Left Ventricular Hypertrophy</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="thalachh">Maximum Heart Rate (bpm):</label>
+            <input type="number" id="thalachh" name="thalachh" required>
+        </div>
+        <div class="form-group">
+            <label for="exng">Exercise-Induced Angina:</label>
+            <input type="radio" id="exng-no" name="exng" value="0" required>
+            <label for="exng-no">No</label>
+            <input type="radio" id="exng-yes" name="exng" value="1">
+            <label for="exng-yes">Yes</label>
+        </div>
+        <div class="form-group">
+            <label for="caa">Number of Major Vessels:</label>
+            <input type="number" id="caa" name="caa" required>
+        </div>
+        <input type="submit" value="Predict">
+    </form>
+    <script>
+        window.addEventListener('load', function() {
+            // Clear the "Chest Pain Type" and "Resting ECG Results" fields
+            document.getElementById('cp').selectedIndex = 0;
+            document.getElementById('restecg').selectedIndex = 0;
+        });
+    </script>
+    
+    
+</body>
+</html>
